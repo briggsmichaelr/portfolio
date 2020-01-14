@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.6">
-  <title>Mike's Portfolio</title>
+  <title>{{detailblog.title}}</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -36,6 +36,11 @@
       user-select: none;
     }
 
+    div a p {
+      margin:0px;
+      padding:0px;
+    }
+
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -55,7 +60,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
           <a class="nav-item nav-link" href="{%static 'Resume - Michael Briggs (Beida).pdf'%}">Resume</a>
-          <a class="nav-item nav-link" href="{%url 'allblogs'%}">Blog</a>
+          <a class="nav-item nav-link active" href="{%url 'allblogs'%}">Blog</a>
           <a class="nav-item nav-link" href="https://www.linkedin.com/in/briggsmichaelr">LinkedIn</a>
         </div>
       </div>
@@ -67,32 +72,18 @@
 
     <section class="jumbotron text-center">
       <div class="container">
-        <h1>Michael Briggs</h1>
-        <p class="lead text-muted">The man, the myth, the legend</p>
-        <img src="{%static 'Briggs Visa.jpg'%}">
-        <p>
-          <a href="mailto:briggsmichaelr@gmail.com" class="btn btn-primary my-2">Email Me</a>
-          <a href="sms:571-354-1130" class="btn btn-secondary my-2">Text Me</a>
-        </p>
+        <h1>{{detailblog.title}}</h1>
+        <br>
+        <img class = 'img-fluid' src="{{detailblog.image.url}}" style="height:300px;">
       </div>
     </section>
 
-    <div class="album py-5 bg-light">
-      <div class="container">
 
-        <div class="row">
-          {% for job in jobs.all %}
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <img class = "card-image-top" src="{{ job.image.url }}" height= 200 width = 100%>
-              <div class="card-body">
-                <p class="card-text">summary: {{job.summary}}</p>
-              </div>
-            </div>
-          </div>
-          {%endfor%}
-        </div>
-      </div>
+    <div class="container">
+
+      <p>{{detailblog.body}}</p>
+      <br />
+      <p style = font-size:0.7em  align = right>{{detailblog.time}}</p>
     </div>
 
   </main>
